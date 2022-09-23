@@ -1,3 +1,4 @@
+const { AsyncLocalStorage } = require("async_hooks");
 const Product = require("../models/Product")
 
 
@@ -14,7 +15,7 @@ exports.createProductService = async (data) => {
 exports.updateProductService = async (productId, data) => {
 
     // update mathod 1
-    const result = await Product.updateOne({ _id: productId }, { $inc: data }, {
+    const result = await Product.updatene({ _id: productId }, { $inc: data }, {
         runValidators: true
     })
 
@@ -23,4 +24,42 @@ exports.updateProductService = async (productId, data) => {
     // const result = await product.set(data).save();
 
     return result;
+}
+
+
+//  bulk update
+
+exports.bulkupdateProductService = async (data) => {
+    // console.log(data);
+    // const result = await Product.updateMany({ _id: data.ids }, data.data, {
+    //     runValidators: true
+    // })
+    // return result;
+
+    const products = []
+    data.ids.forEach(product => {
+        console.log(product.id, product.data);
+        products.push(Product.updateOne({ _id: product.id }, product.data));
+
+    });
+
+    const result = await Promise.all(products)
+
+    return result
+
+
+}
+
+
+exports.deleteProductService = async (id) => {
+    console.log(id);
+    const result = await Product.deleteOne({ _id: id })
+    return result
+}
+
+
+exports.bulkDeleteService = async (id) => {
+    console.log(id);
+    const result = await Product.deleteMany({ _id: id })
+    return result
 }

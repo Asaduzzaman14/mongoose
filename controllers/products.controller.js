@@ -1,4 +1,4 @@
-const { getProductService, createProductService, updateProductService } = require("../services/product.sevices")
+const { getProductService, createProductService, updateProductService, bulkupdateProductService, deleteProductService, bulkDeleteService } = require("../services/product.sevices")
 
 exports.createProduct = async (req, res, next) => {
     try {
@@ -91,4 +91,84 @@ exports.updateProduct = async (req, res, next) => {
         })
 
     }
-}
+};
+
+
+
+exports.bulkUpdateProduct = async (req, res, next) => {
+    try {
+        console.log(req.body);
+        const result = await bulkupdateProductService(req.body);
+
+        res.status(200).json({
+            status: true,
+            message: "Successfully product updated",
+            result: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: false,
+            message: "Cant't  update bulk product",
+            error: error.message
+        })
+
+    }
+};
+
+
+
+exports.deleteProduct = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const result = await deleteProductService(id);
+        if (!result.deletedCount) {
+            return res.status(400).json({
+                status: false,
+                error: "Couldn't delete the product"
+            })
+        }
+
+        res.status(200).json({
+            status: true,
+            message: "Successfully product deleted",
+            result: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: false,
+            message: "product Cant't  deleted",
+            error: error.message
+        })
+
+    }
+};
+
+
+
+
+
+exports.bulkDeleteProduct = async (req, res, next) => {
+    try {
+        const result = await bulkDeleteService(req.body.ids);
+
+        if (!result.deletedCount) {
+            return res.status(400).json({
+                status: false,
+                error: "Couldn't delete the product"
+            })
+        }
+
+        res.status(200).json({
+            status: true,
+            message: "Successfully deleted the given product product",
+            result: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: false,
+            message: "Couldn't  Deleted bulk product",
+            error: error.message
+        })
+
+    }
+};
