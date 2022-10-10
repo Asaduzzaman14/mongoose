@@ -19,6 +19,6 @@ const catagorySchema = mongoose.Schema({
 })
 
 
-const Catagory = mongoose.Schema("catagory", catagorySchema);
+const Catagory = mongoose.Model("Catagory", catagorySchema);
 
 exports = Catagory;
