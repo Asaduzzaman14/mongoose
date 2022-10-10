@@ -50,7 +50,41 @@ exports.getProductds = async (req, res, next) => {
         // const product = await Product.find({}, '-name -quantity') // projection
         // const product = await Product.find({}).sort({ quantity: -1 }) // projection
 
-        const products = await getProductService()
+
+        let filters = { ...req.query };
+        // console.log(filters);
+        const exclidefildes = ["sort", "page", "limit"]
+        exclidefildes.forEach(field => delete filters[field])
+
+
+        // gt, lt, get, lte,
+        let filtersString = JSON.stringify(filters);
+        filtersString = filtersString.replace(/\b(gt|gte|lt|lte)\b/g, match => `$${match}`);
+        filters = JSON.parse(filtersString)
+
+        // 7-5
+        const queries = {}
+
+        if (req.query.sort) {
+            const sortBy = req.query.sort.split(',').join(' ')
+            queries.sortBy = sortBy;
+            console.log(sortBy);
+        }
+        if (req.query.fields) {
+            const fields = req.query.fields.split(',').join(' ')
+            queries.fields = fields;
+            console.log(fields);
+        }
+        if (req.query.page) {
+            const { page = 1, limit = 2 } = req.query;
+            const skip = (page - 1) * parseInt(limit)
+            queries.skip = skip;
+            queries.limit = parseInt(limit)
+        }
+        console.log(queries);
+
+
+        const products = await getProductService(filters, queries)
         res.status(200).json({
             status: true,
             message: "Successfully get data",

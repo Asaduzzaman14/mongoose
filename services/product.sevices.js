@@ -1,10 +1,17 @@
-const { AsyncLocalStorage } = require("async_hooks");
 const Product = require("../models/Product")
 
 
-exports.getProductService = async () => {
-    const products = await Product.find({})
-    return products
+exports.getProductService = async (filters, queries) => {
+
+    const products = await Product.find(filters)
+        .skip(queries.skip)
+        .limit(queries.limit)
+        .select((queries.fields))
+        .sort(queries.sortBy)
+    const totalProduct = await Product.countDocuments(filters)
+    const pageCount = Math.ceil(totalProduct / queries.limit)
+
+    return { totalProduct, pageCount, products }
 };
 
 exports.createProductService = async (data) => {
