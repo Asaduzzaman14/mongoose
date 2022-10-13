@@ -5,7 +5,7 @@ const { ObjectId } = mongoose.Schema.Types
 
 const brandSchema = mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         trim: true,
         require: [true, "Please Provide a Brand name"],
         maxlangth: 20,
@@ -32,7 +32,7 @@ const brandSchema = mongoose.Schema({
         name: String,
         contancNumber: String,
         id: {
-            type: OnjectId,
+            type: ObjectId,
             ref: "Supplier"
         }
     }],
@@ -47,6 +47,6 @@ const brandSchema = mongoose.Schema({
     timestamps: true
 })
 
-const Brand = mongoose.Model("Brand", brandSchema);
+const Brand = mongoose.model("Brand", brandSchema);
 
-exports = Brand;
+module.exports = Brand;
