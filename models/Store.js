@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const { ObjectId } = mongoose.Schema.Types
 
 const storeSchema = mongoose.Schema({
@@ -22,7 +21,38 @@ const storeSchema = mongoose.Schema({
     },
     manager: {
         name: String,
+        contactNumber: String,
+        id: {
+            type: ObjectId,
+            ref: "User"
+        }
+    },
+    name: {
+        type: string,
+        trim: true,
+        require: [true, "Please Provide a Brand name"],
+        lowercase: true,
+        enum: {
+            values: ["dhaka", "chittagong", "khulna", "barishal", "sylhet", "rangpur", "mymenshigh"],
+            message: "{VALUE} is not valid name"
+        },
+
+    },
+    suplieredBy: {
+        name: {
+            type: string,
+            trim: true,
+            require: [true, "Please Provide a suplier name"],
+
+        },
+        id: {
+            type: ObjectId,
+            ref: "Supplier"
+        }
     }
+
+
+
 
 }, {
     timestamps: true

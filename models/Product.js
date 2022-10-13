@@ -1,4 +1,7 @@
-const { mongoose } = require("mongoose");
+const mongoose = require('mongoose');
+const validator = require('validator');
+const { ObjectId } = mongoose.Schema.Types
+
 
 // SCHEMA > MODEL > QUERY 
 
@@ -10,6 +13,7 @@ const productSchema = mongoose.Schema({
         required: [true, "please provide a name for this producr"],
         trim: true,
         unique: [true, "Name Must be unique"],
+        lowercase: true,
         minLength: [3, "Name must be at least 3 chearacters."],
         maxLength: [20, " Name is too large"],
     },
@@ -17,43 +21,78 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    price: {
-        type: Number,
-        required: true,
-        min: [0, "Price Can't be negative"],
-    },
+
     unit: {
         type: String,
         required: true,
         enum: {
-            values: ["kg", "Littre", "pcs"],
-            message: "unit value can't be {VALUE}, must be kg/litre/pcs"
+            values: ["kg", "Littre", "pcs", "bag"],
+            message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag"
         }
     },
-    quantity: {
-        type: Number,
-        required: true,
-        min: [0, "Quantity can't be nagative"],
+    imageURL: [{
+        type: String,
+        require: true,
         validate: {
             validator: (value) => {
-                const isIntegr = Number.isInteger(value)
-                if (isIntegr) {
-                    return true
-                } else {
+                if (!Array.isArray(value)) {
                     return false
                 }
-            }
-        },
-        message: "Quantity must be an integer"
-    },
-    status: {
-        type: String,
-        required: true,
-        enum: {
-            values: ["In-stock", "out-of-stock", "discontinued"],
-            message: "status can't be {VALUE}"
+                let isValid = true;
+                value.forEach((url) => {
+                    if (validate.isURL(url)) {
+                        isValid = false
+                    }
+                })
+                return isValid;
+            },
+            message: "Please Provie valid image urls"
         }
+    }],
+
+    catagory: {
+        type: String,
+        require: true
     },
+
+    brand: {
+        name: {
+            type: String,
+            required: true,
+        },
+        id: {
+            type: ObjectId,
+            ref: "Brand",
+            required: true,
+        }
+    }
+
+
+
+    // quantity: {
+    //     type: Number,
+    //     required: true,
+    //     min: [0, "Quantity can't be nagative"],
+    //     validate: {
+    //         validator: (value) => {
+    //             const isIntegr = Number.isInteger(value)
+    //             if (isIntegr) {
+    //                 return true
+    //             } else {
+    //                 return false
+    //             }
+    //         }
+    //     },
+    //     message: "Quantity must be an integer"
+    // },
+    // status: {
+    //     type: String,
+    //     required: true,
+    //     enum: {
+    //         values: ["In-stock", "out-of-stock", "discontinued"],
+    //         message: "status can't be {VALUE}"
+    //     }
+    // },
     // createdAt: {
     //     type: Date,
     //     default: Date.now,
