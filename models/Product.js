@@ -30,24 +30,24 @@ const productSchema = mongoose.Schema({
             message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag"
         }
     },
-    imageURL: [{
+    imageURLs: [{
         type: String,
         require: true,
-        validate: {
-            validator: (value) => {
-                if (!Array.isArray(value)) {
-                    return false
-                }
-                let isValid = true;
-                value.forEach((url) => {
-                    if (validate.isURL(url)) {
-                        isValid = false
-                    }
-                })
-                return isValid;
-            },
-            message: "Please Provie valid image urls"
-        }
+        // validate: {
+        //     validator: (value) => {
+        //         if (!Array.isArray(value)) {
+        //             return false
+        //         }
+        //         let isValid = true;
+        //         value.forEach((url) => {
+        //             if (validator.isURL(url)) {
+        //                 isValid = false
+        //             }
+        //         })
+        //         return isValid;
+        //     },
+        //     message: "Please Provie valid image urls"
+        // }
     }],
 
     catagory: {
@@ -123,15 +123,15 @@ const productSchema = mongoose.Schema({
 
 //mongoose middleware for saving data: pre/post
 
-productSchema.pre("save", function (next) {
-    console.log("Before saving data");
-    if (this.quantity == 0) {
-        this.status = "out-of-stock"
-    }
+// productSchema.pre("save", function (next) {
+//     console.log("Before saving data");
+//     if (this.quantity == 0) {
+//         this.status = "out-of-stock"
+//     }
 
 
-    next()
-})
+//     next()
+// })
 
 // producrSchema.post("save", function (doc, next) {
 //     console.log("before saving data");

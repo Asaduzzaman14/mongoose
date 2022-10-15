@@ -4,6 +4,10 @@ const { ObjectId } = mongoose.Schema.Types
 
 
 const brandSchema = mongoose.Schema({
+    products: [{
+        type: ObjectId,
+        ref: "Product"
+    }],
     name: {
         type: String,
         trim: true,
@@ -23,10 +27,7 @@ const brandSchema = mongoose.Schema({
         validator: [validator.isURL, " Please Provie av valid URL"]
     },
     location: String,
-    product: [{
-        type: ObjectId,
-        ref: "Product"
-    }],
+
 
     supplier: [{
         name: String,

@@ -9,6 +9,8 @@ app.use(cors())
 // routes
 const productRoutes = require('./routes/productRoutes');
 const brandRoute = require('./routes/brand.route');
+const storeRoute = require('./routes/store.route');
+const catagoryRoute = require('./routes/catagoty.route');
 
 app.get("/", (req, res) => {
     res.send("Rouret is warking!")
@@ -18,6 +20,8 @@ app.get("/", (req, res) => {
 // get data 
 app.use("/api/v1/product", productRoutes)
 app.use("/api/v1/brand", brandRoute)
+app.use("/api/v1/store", storeRoute)
+app.use("/api/v1/catagory", catagoryRoute)
 
 
 module.exports = app

@@ -3,7 +3,7 @@ const { ObjectId } = mongoose.Schema.Types
 
 const storeSchema = mongoose.Schema({
     name: {
-        type: string,
+        type: String,
         trim: true,
         require: [true, "Please Provide a Brand name"],
         lowercase: true,
@@ -28,7 +28,7 @@ const storeSchema = mongoose.Schema({
         }
     },
     name: {
-        type: string,
+        type: String,
         trim: true,
         require: [true, "Please Provide a Brand name"],
         lowercase: true,
@@ -40,7 +40,7 @@ const storeSchema = mongoose.Schema({
     },
     suplieredBy: {
         name: {
-            type: string,
+            type: String,
             trim: true,
             require: [true, "Please Provide a suplier name"],
 
@@ -58,6 +58,6 @@ const storeSchema = mongoose.Schema({
     timestamps: true
 })
 
-const Store = mongoose.Model("Store", storeSchema);
+const Store = mongoose.model("Store", storeSchema);
 
 exports = Store;

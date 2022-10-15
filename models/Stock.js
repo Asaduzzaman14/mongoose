@@ -91,7 +91,7 @@ const stockSchema = mongoose.Schema({
     },
     store: {
         name: {
-            type: string,
+            type: String,
             trim: true,
             require: [true, "Please Provide a Brand name"],
             lowercase: true,
@@ -108,7 +108,7 @@ const stockSchema = mongoose.Schema({
     },
     suppliedBy: {
         name: {
-            type: string,
+            type: String,
             trim: true,
             require: [true, "Please Provide a supplier name"],
         },
