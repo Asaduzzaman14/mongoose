@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router()
 const productController = require('../controllers/products.controller');
+const uploder = require('../middleware/uploder');
 
 
+
+router.post("/file-uplode", uploder.single('image'), productController.fileUplode)
 
 router.route('/bulkUpdate')
     .patch(productController.bulkUpdateProduct)

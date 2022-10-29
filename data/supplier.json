@@ -1,0 +1,59 @@
+[
+    {
+        "name": "asad",
+        "email": "aa@aa.com",
+        "brand": {
+            "name": "fresh",
+            "id": "634ada5dcf5736418386b59e"
+        },
+        "contractNumber": [
+            "01859025945",
+            "01859025"
+        ],
+        "emergencyContractNumber": "+923834",
+        "tradeLicenceNumber": "0111000",
+        "presentAddress": "234, dhaka",
+        "location": "chittagong",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "nationalIDImageURL": "https://unsplash.com/photos/dR7b2rSptLQ",
+        "status": "active"
+    },
+    {
+        "name": "asad",
+        "email": "aa@aa.com",
+        "brand": {
+            "name": "fresh",
+            "id": "634ada5dcf5736418386b59e"
+        },
+        "contractNumber": [
+            "01859025945",
+            "01859025"
+        ],
+        "emergencyContractNumber": "+923834",
+        "tradeLicenceNumber": "0111000",
+        "presentAddress": "234, dhaka",
+        "location": "dhaka",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "nationalIDImageURL": "https://unsplash.com/photos/dR7b2rSptLQ",
+        "status": "active"
+    },
+    {
+        "name": "asaduzzaman",
+        "email": "asaduzzaman1156@gmail.com",
+        "brand": {
+            "name": "aci",
+            "id": "634af4ea1de348654a3a5a6f"
+        },
+        "contractNumber": [
+            "01859025945",
+            "01859025"
+        ],
+        "emergencyContractNumber": "+923834",
+        "tradeLicenceNumber": "0111000",
+        "presentAddress": "234, dhaka",
+        "location": "khulna",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "nationalIDImageURL": "https://unsplash.com/photos/dR7b2rSptLQ",
+        "status": "active"
+    }
+]

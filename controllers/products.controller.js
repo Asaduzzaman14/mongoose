@@ -206,3 +206,13 @@ exports.bulkDeleteProduct = async (req, res, next) => {
 
     }
 };
+
+
+exports.fileUplode = async (req, res) => {
+    try {
+        res.status(200).json(req.file)
+
+    } catch (error) {
+
+    }
+}

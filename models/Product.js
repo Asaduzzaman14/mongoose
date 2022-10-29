@@ -26,7 +26,7 @@ const productSchema = mongoose.Schema({
         type: String,
         required: true,
         enum: {
-            values: ["kg", "Littre", "pcs", "bag"],
+            values: ["kg", "litre", "pcs", "bag"],
             message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag"
         }
     },
