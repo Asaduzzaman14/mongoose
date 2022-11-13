@@ -1,0 +1,122 @@
+[
+    {
+        "productId": "634ada5dcf5736418386b59e",
+        "name": "fresh product",
+        "description": "this is desctiption",
+        "unit": "kg",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "price": "121",
+        "quantity": "42",
+        "catagory": "rive",
+        "brand": {
+            "name": "fresh",
+            "id": "634ada5dcf5736418386b59e"
+        },
+        "status": "active",
+        "store": {
+            "name": "chittagong",
+            "id": ""
+        },
+        "suppliedBy": {
+            "name": "asad",
+            "id": "635d69982ecaa0f9f0dfa41b"
+        },
+        "selCount": 23
+    },
+    {
+        "productId": "634adeed68283862231d7885",
+        "name": "fresh product",
+        "description": "this is desctiption",
+        "unit": "kg",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "price": "121",
+        "quantity": "42",
+        "catagory": "rive",
+        "brand": {
+            "name": "aci",
+            "id": "634af4ea1de348654a3a5a6f"
+        },
+        "status": "active",
+        "store": {
+            "name": "chittagong",
+            "id": ""
+        },
+        "suppliedBy": {
+            "name": "asad 1",
+            "id": "635d6a422ecaa0f9f0dfa423"
+        },
+        "selCount": 23
+    },
+    {
+        "productId": "634ae04e68283862231d788e",
+        "name": "fresh product",
+        "description": "this is desctiption",
+        "unit": "kg",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "price": "121",
+        "quantity": "42",
+        "catagory": "rive",
+        "brand": {
+            "name": "fresh",
+            "id": ""
+        },
+        "status": "active",
+        "store": {
+            "name": "chittagong",
+            "id": ""
+        },
+        "suppliedBy": {
+            "name": "asaduzzaman",
+            "id": "635d6a742ecaa0f9f0dfa425"
+        },
+        "selCount": 23
+    },
+    {
+        "productId": "634ae1850aadc4b3927d407d",
+        "name": "fresh product",
+        "description": "this is desctiption",
+        "unit": "kg",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "price": "121",
+        "quantity": "42",
+        "catagory": "rive",
+        "brand": {
+            "name": "fresh",
+            "id": ""
+        },
+        "status": "active",
+        "store": {
+            "name": "chittagong",
+            "id": ""
+        },
+        "suppliedBy": {
+            "name": "asaduzzaman",
+            "id": ""
+        },
+        "selCount": 23
+    },
+    {
+        "productId": "634ae1cd49adc0d003987235",
+        "name": "fresh product",
+        "description": "this is desctiption",
+        "unit": "kg",
+        "imageURL": "https://unsplash.com/photos/iEEBWgY_6lA",
+        "price": "121",
+        "quantity": "42",
+        "catagory": "rive",
+        "brand": {
+            "name": "fresh",
+            "id": ""
+        },
+        "status": "active",
+        "store": {
+            "name": "chittagong",
+            "id": ""
+        },
+        "suppliedBy": {
+            "name": "asaduzzaman",
+            "id": ""
+        },
+        "selCount": 23
+    }
+]

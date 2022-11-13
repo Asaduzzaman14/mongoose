@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types
+const validator = require('validator');
 
 // SCHEMA > MODEL > QUERY 
 
@@ -16,7 +17,6 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: [true, "please provide a name for this Stock"],
         trim: true,
-        unique: [true, "Name Must be unique"],
         lowercase: true,
         minLength: [3, "Name must be at least 3 chearacters."],
         maxLength: [20, " Name is too large"],
@@ -37,21 +37,7 @@ const stockSchema = mongoose.Schema({
     imageURL: [{
         type: String,
         require: true,
-        validate: {
-            validator: (value) => {
-                if (!Array.isArray(value)) {
-                    return false
-                }
-                let isValid = true;
-                value.forEach((url) => {
-                    if (validate.isURL(url)) {
-                        isValid = false
-                    }
-                })
-                return isValid;
-            },
-            message: "Please Provie valid image urls"
-        }
+        validate: [validator.isURL, "pleaze provide a valid URl"]
     }],
     price: {
         type: Number,
@@ -77,14 +63,14 @@ const stockSchema = mongoose.Schema({
         id: {
             type: ObjectId,
             ref: "Brand",
-            required: trud,
+            required: true,
         }
     },
     status: {
         type: String,
         required: true,
         enum: {
-            value: ["in-stock", "out-of-stock", "discontiued"],
+            values: ["in-stock", "out-of-stock", "discontiued"],
             message: "status can't be {VALUE}"
         },
 
@@ -116,6 +102,11 @@ const stockSchema = mongoose.Schema({
             type: ObjectId,
             ref: "Supplier"
         }
+    },
+    selCount: {
+        type: Number,
+        default: 0,
+        min: 0
     }
 
 
@@ -129,7 +120,7 @@ const stockSchema = mongoose.Schema({
 
 // model
 
-const Stock = mongoose.model("stock", stockSchema)
+const Stock = mongoose.model("Stock", stockSchema)
 
 
 module.exports = Stock

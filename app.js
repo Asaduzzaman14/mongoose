@@ -12,6 +12,8 @@ const brandRoute = require('./routes/brand.route');
 const storeRoute = require('./routes/store.route');
 const catagoryRoute = require('./routes/catagoty.route');
 const supplierRoute = require('./routes/suplier.route');
+const stockRoute = require('./routes/stock.route');
+const userRoute = require('./routes/user.route');
 
 app.get("/", (req, res) => {
     res.send("Rouret is warking!")
@@ -24,6 +26,8 @@ app.use("/api/v1/brand", brandRoute)
 app.use("/api/v1/store", storeRoute)
 app.use("/api/v1/catagory", catagoryRoute)
 app.use("/api/v1/supplier", supplierRoute)
+app.use("/api/v1/stock", stockRoute)
+app.use("/api/v1/user", userRoute)
 
 
 module.exports = app
