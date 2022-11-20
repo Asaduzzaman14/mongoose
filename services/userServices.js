@@ -7,7 +7,7 @@ exports.signupService = async (userInfo) => {
     return user;
 }
 
-exports.fiendEmailByEmail = async (userInfo) => {
+exports.findUserByEmail = async (userInfo) => {
 
     const user = await User.findOne({ email })
     return user;

@@ -1,4 +1,4 @@
-const { signupService, fiendEmailByEmail } = require("../services/userServices")
+const { signupService, fiendEmailByEmail, fiendUserByEmail, findUserByEmail } = require("../services/userServices")
 const bcrypt = require('bcryptjs');
 const { generateToken } = require("../utils/token");
 
@@ -86,6 +86,23 @@ exports.login = async (req, res) => {
         res.status(500).json({
             status: "fail",
             error: error.message
+        })
+    }
+}
+
+exports.getMe = async (req, res) => {
+    try {
+
+        const user = await findUserByEmail(req.user?.email)
+        res.status(200).json({
+            status: 'Success',
+            data: user
+        })
+
+    } catch (error) {
+        return res.status(400).json({
+            status: 'fail',
+            error: "user cant't get"
         })
     }
 }
